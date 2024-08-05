@@ -2,17 +2,20 @@
 namespace EmailSender\Crud;
 
 use EmailSender\Message\Message;
+use EmailSender\Crud\Inputs\Input;
 use EmailSender\Crud\Crud;
 
 class Create implements Crud
 {
+
+    public function __construct (
+        private Input $input
+    ){}
+
     public function run()
     {
-        $email = readline('digite seu email ');
-
-        $check = $this->createUser($email);
-
-        $this->SendMessageIfIsCreate($check, $email);
+        return $this->createUser($this->input->read());
+        // $this->SendMessageIfIsCreate($check, $email);
     }
 
     private function createUser(string $email)

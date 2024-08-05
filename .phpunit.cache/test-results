@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"Tests\\CreateTest::test_bla":0.007}}
+{"version":1,"defects":{"Tests\\CreateTest::test_if_create_user_is_true":7},"times":{"Tests\\CreateTest::test_bla":0.007,"Tests\\CreateTest::test_if_create_user_is_true":0.031,"Tests\\CreateTest::test_if_create_user_is_false":0.008}}

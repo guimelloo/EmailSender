@@ -2,6 +2,7 @@
 namespace EmailSender\Crud;
 
 use EmailSender\Crud\Create;
+use EmailSender\Crud\Inputs\TerminalInput;
 use EmailSender\Crud\Delete;
 
 class Choose
@@ -14,9 +15,11 @@ class Choose
 
     private function chooseFactory($msg)
     {
+        $input = new TerminalInput;
+
         $crud = match (strtolower($msg)) {
-            'create' => new Create ,
-            'delete' => new Delete,
+            'create' => new Create($input) ,
+            // 'delete' => new Delete($input),
         };
 
         $crud->run();
