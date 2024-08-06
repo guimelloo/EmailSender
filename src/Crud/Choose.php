@@ -5,6 +5,7 @@ use EmailSender\Crud\Create;
 use EmailSender\Crud\Inputs\TerminalInput;
 use EmailSender\Crud\Outputs\EmailOutput;
 use EmailSender\Crud\Delete;
+use EmailSender\Crud\Writer\WriteFile;
 
 class Choose
 {
@@ -17,7 +18,7 @@ class Choose
     private function chooseFactory($msg)
     {
         $crud = match (strtolower($msg)) {
-            'create' => new Create( new TerminalInput, new EmailOutput) ,
+            'create' => new Create( new TerminalInput, new WriteFile, new EmailOutput) ,
             // 'delete' => new Delete($input),
         };
 

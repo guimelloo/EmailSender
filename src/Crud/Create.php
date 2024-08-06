@@ -3,6 +3,7 @@ namespace EmailSender\Crud;
 
 use EmailSender\Crud\Inputs\Input;
 use EmailSender\Crud\Outputs\Output;
+use EmailSender\Crud\Writer\Write;
 use EmailSender\Crud\Crud;
 
 class Create implements Crud
@@ -10,6 +11,7 @@ class Create implements Crud
 
     public function __construct (
         private Input $input,
+        private Write $writer,
         private Output $output
 
     ){}
@@ -31,7 +33,7 @@ class Create implements Crud
 
         $this->CheckIfUserIsCreate($email, $path);
 
-        fwrite($myfile, "$email\n");
+        $this->writer->write($myfile, $email);
 
         fclose($myfile);
 
