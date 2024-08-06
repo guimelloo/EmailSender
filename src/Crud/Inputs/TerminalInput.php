@@ -9,4 +9,9 @@ class TerminalInput implements Input
     {
         return readline('Qual o seu email?: ');
     }
+
+    public function crateUser(string $email)
+    {
+
+    }
 }
