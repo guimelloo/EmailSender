@@ -3,7 +3,7 @@ namespace EmailSender\Crud;
 
 use EmailSender\Crud\Inputs\Input;
 use EmailSender\Crud\Outputs\Output;
-use EmailSender\Crud\Writer\Write;
+use EmailSender\Crud\Writer\Database;
 use EmailSender\Crud\Crud;
 
 class Create implements Crud
@@ -11,9 +11,8 @@ class Create implements Crud
 
     public function __construct (
         private Input $input,
-        private Write $writer,
-        private Output $output
-
+        private Database $database,
+        private Output $output,
     ){}
 
     public function run()
@@ -27,27 +26,18 @@ class Create implements Crud
 
     private function createUser(string $email)
     {
-        $path = __DIR__ . '/database.txt';
+        $this->CheckIfUserIsCreate($email);
 
-        $myfile = fopen($path, "a+");
-
-        $this->CheckIfUserIsCreate($email, $path);
-
-        $this->writer->write($myfile, $email);
-
-        fclose($myfile);
-
-        // return true;
+        $this->database->write($email);
     }
 
-    private function CheckIfUserIsCreate($email, $path)
+    private function CheckIfUserIsCreate($email)
     {
-        $files = file($path);
+        $files = explode("\n", $this->database->get());
 
-        // dd($files);
-        foreach ($files as $file) {
+        foreach (array_filter($files) as $file) {
             if ($file === $email) {
-                throw new \Exception("error, user alredy exists");
+                throw new \Exception("error, user already exists");
             }
         }
     }
