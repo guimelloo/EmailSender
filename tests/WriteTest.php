@@ -1,9 +1,6 @@
 <?php
 namespace Tests;
 
-use EmailSender\Crud\Create;
-use EmailSender\Crud\Inputs\TerminalInput;
-use EmailSender\Crud\Outputs\EmailOutput;
 use EmailSender\Crud\DataBase\WriteFile;
 use PHPUnit\Framework\TestCase;
 

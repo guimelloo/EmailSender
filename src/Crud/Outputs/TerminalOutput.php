@@ -3,10 +3,12 @@ namespace EmailSender\Crud\Outputs;
 
 class TerminalOutput implements Output
 {
-    public function output(): string|null
+    public function output(): ?string
     {
-        $url = "https://github.com/guimelloo";
+        $message = "\nThanks to being looking to my codes, I apreciate your time here!"; 
+        
+        echo $message;
 
-        return shell_exec("start chrome $url");
+        return $message;
     }
 } 

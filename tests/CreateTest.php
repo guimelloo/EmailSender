@@ -41,7 +41,7 @@ class CreateTest extends TestCase
             $this->createInputMock('negromonteguilherme@gmail.com'),
             $this->database,
             $this->createEmailMock(),
-            $this->createOutputMock(),
+            $this->createOutputMock("foi"),
         );
 
         $createUser->run();
@@ -60,7 +60,7 @@ class CreateTest extends TestCase
             $this->createInputMock('negromonteguilherme@gmail.com'),
             $this->database,
             $this->createEmailMock(),
-            $this->createOutputMock(),
+            $this->createOutputMock("foi"),
         );
 
         $this->expectException(\Exception::class);
@@ -77,9 +77,13 @@ class CreateTest extends TestCase
         return $mock;
     }
 
-    private function createOutputMock()
+    private function createOutputMock($return)
     {
-        $mock = $this->getMockBuilder(TerminalOutput::class)->getMock();
+        $mock = $this->getMockBuilder(TerminalOutput::class)
+            // ->setConstructorArgs(['aaa'])
+            ->getMock();
+
+        $mock->method('output')->willReturn($return);
 
         return $mock;
     }

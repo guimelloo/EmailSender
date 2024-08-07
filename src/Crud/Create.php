@@ -19,9 +19,11 @@ class Create implements Crud
 
     public function run()
     {
-        $this->createUser($this->input->read());
+        $email = $this->createUser($this->input->read());
 
-        $this->sender->send($this->input->read());
+        $this->sender->send($email);
+
+        $this->output->output();
 
         return true;
     }
@@ -31,6 +33,8 @@ class Create implements Crud
         $this->CheckIfUserIsCreate($email);
 
         $this->database->write($email);
+        
+        return $email;
     }
 
     private function CheckIfUserIsCreate($email)

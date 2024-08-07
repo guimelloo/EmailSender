@@ -14,6 +14,6 @@ class Email implements Sender
 
         $message = new Message;
 
-        $message->run($email);
+        return $message->run($email);
     }
 }
