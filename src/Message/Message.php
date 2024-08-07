@@ -9,7 +9,7 @@ class Message
 {
     public function run($reciver)
     {
-        $this->config($reciver);
+        return $this->config($reciver);
     }
 
     private function settings()

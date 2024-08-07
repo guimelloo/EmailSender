@@ -1,9 +1,10 @@
 <?php
-namespace EmailSender\Crud\Writer;
+namespace EmailSender\Crud\DataBase;
 
-use EmailSender\Crud\Writer\Write;
+use EmailSender\Crud\DataBase\Write;
+use EmailSender\Crud\DataBase\DB;
 
-class WriteFile implements Database
+class WriteFile implements DB
 {
     public function __construct(public readonly string $filename)
     {}
@@ -24,15 +25,6 @@ class WriteFile implements Database
         return $result;
     }
 
-    public function unWrite($email)
-    {
-        $content = file_get_contents($this->filename);
-
-        $modifiedContent = str_replace($email, '', $content);
-
-        file_put_contents($this->filename, $modifiedContent);
-    }
-
     public function clear()
     {
         $file = fopen($this->filename, 'w');
@@ -40,5 +32,5 @@ class WriteFile implements Database
         ftruncate($file, 0);
 
         fclose($file);
-    }
+    } 
 }

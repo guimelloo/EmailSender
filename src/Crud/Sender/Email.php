@@ -1,12 +1,12 @@
 <?php
-namespace EmailSender\Crud\Outputs;
+namespace EmailSender\Crud\Sender;
 
-use EmailSender\Crud\Outputs\Output;
+use EmailSender\Crud\Sender\Sender;
 use EmailSender\Message\Message;
 
-class EmailOutput implements Output
+class Email implements Sender
 {
-    public function output(string $email): ?string
+    public function send(string $email): ?string
     {
         if ($email == false) {
             return 'error';

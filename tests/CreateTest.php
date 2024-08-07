@@ -3,8 +3,9 @@ namespace Tests;
 
 use EmailSender\Crud\Create;
 use EmailSender\Crud\Inputs\TerminalInput;
-use EmailSender\Crud\Outputs\EmailOutput;
-use EmailSender\Crud\Writer\WriteFile;
+use EmailSender\Crud\Sender\Email;
+use EmailSender\Crud\Outputs\TerminalOutput;
+use EmailSender\Crud\DataBase\WriteFile;
 use PHPUnit\Framework\TestCase;
 
 class CreateTest extends TestCase
@@ -39,6 +40,7 @@ class CreateTest extends TestCase
         $createUser = new Create(
             $this->createInputMock('negromonteguilherme@gmail.com'),
             $this->database,
+            $this->createEmailMock(),
             $this->createOutputMock(),
         );
 
@@ -57,6 +59,7 @@ class CreateTest extends TestCase
         $createUser = new Create(
             $this->createInputMock('negromonteguilherme@gmail.com'),
             $this->database,
+            $this->createEmailMock(),
             $this->createOutputMock(),
         );
 
@@ -67,9 +70,16 @@ class CreateTest extends TestCase
         $createUser->run();
     }
 
+    private function createEmailMock()
+    {
+        $mock = $this->getMockBuilder(Email::class)->getMock();
+
+        return $mock;
+    }
+
     private function createOutputMock()
     {
-        $mock = $this->getMockBuilder(EmailOutput::class)->getMock();
+        $mock = $this->getMockBuilder(TerminalOutput::class)->getMock();
 
         return $mock;
     }

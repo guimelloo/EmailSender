@@ -3,15 +3,17 @@ namespace EmailSender\Crud;
 
 use EmailSender\Crud\Inputs\Input;
 use EmailSender\Crud\Outputs\Output;
-use EmailSender\Crud\Writer\Database;
+use EmailSender\Crud\DataBase\DB;
 use EmailSender\Crud\Crud;
+use EmailSender\Crud\Sender\Sender;
 
 class Create implements Crud
 {
 
     public function __construct (
         private Input $input,
-        private Database $database,
+        private DB $database,
+        private Sender $sender,
         private Output $output,
     ){}
 
@@ -19,7 +21,7 @@ class Create implements Crud
     {
         $this->createUser($this->input->read());
 
-        $this->output->output($this->input->read());
+        $this->sender->send($this->input->read());
 
         return true;
     }

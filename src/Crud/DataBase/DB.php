@@ -1,13 +1,11 @@
 <?php
-namespace EmailSender\Crud\Writer;
+namespace EmailSender\Crud\DataBase;
 
-interface Database
+interface DB
 {
     public function get();
     
     public function write($b): bool;
-
-    public function unWrite($b);
 
     public function clear();
 }
