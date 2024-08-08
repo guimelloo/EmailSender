@@ -22,10 +22,15 @@ class WriteTest extends TestCase
 
     public function test_if_clear_is_cleaning()
     {
-        $this->database->write('negromonteguilherme@gmail.com');
+        $this->database->write('negromonteguilherme@gmail.com'); 
 
         $this->database->clear();
 
         $this->assertSame('', $this->database->get());
+    }
+
+    public function test_get_is_string()
+    {
+        $this->assertIsString($this->database->get());
     }
 }
