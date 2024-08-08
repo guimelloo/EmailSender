@@ -12,8 +12,8 @@ class Sms implements Message
 
     public function settings()
     {
-        $sid = 'AC85c52a746711715884bbf2f64864b423';
-        $token = '35cd37e65d220c2361890ca5a9e61f27';
+        $sid = '';
+        $token = '';
         $client = new Client($sid, $token);
 
         return $client;
@@ -24,7 +24,7 @@ class Sms implements Message
         $this->settings()->messages->create(
             $reciver,
             [
-                'from' => '+31685013132',
+                'from' => '',
                 
                 'body' => 'Messagem teste'
             ]

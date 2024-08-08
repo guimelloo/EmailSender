@@ -9,8 +9,8 @@ interface Message
 {
     public function run(string $reciver);
 
-    public function settings();
+    private function settings();
 
-    public function config(string $reciver);
+    private function config(string $reciver);
 
 }
