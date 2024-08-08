@@ -1,5 +1,5 @@
 <?php
-namespace EmailSender\Crud\DataBase;
+namespace EmailSender\Crud\Database;
 
 use EmailSender\Crud\DataBase\Write;
 use EmailSender\Crud\DataBase\DB;
@@ -28,8 +28,6 @@ class WriteFile implements DB
     public function clear()
     {
         $file = fopen($this->filename, 'w');
-
-        ftruncate($file, 0);
 
         fclose($file);
     } 

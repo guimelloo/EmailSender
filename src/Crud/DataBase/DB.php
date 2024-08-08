@@ -1,5 +1,5 @@
 <?php
-namespace EmailSender\Crud\DataBase;
+namespace EmailSender\Crud\Database;
 
 interface DB
 {

@@ -3,7 +3,7 @@ namespace EmailSender\Crud;
 
 use EmailSender\Crud\Inputs\Input;
 use EmailSender\Crud\Outputs\Output;
-use EmailSender\Crud\DataBase\DB;
+use EmailSender\Crud\Database\DB;
 use EmailSender\Crud\Crud;
 use EmailSender\Crud\Sender\Sender;
 

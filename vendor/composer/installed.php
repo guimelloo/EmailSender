@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'negro/email-sender',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '9eb57f0a2a0885d028eac3cc67766e354a5ac6a0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => true,
         ),
         'negro/email-sender' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '9eb57f0a2a0885d028eac3cc67766e354a5ac6a0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -279,6 +279,15 @@
             'install_path' => __DIR__ . '/../theseer/tokenizer',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'twilio/sdk' => array(
+            'pretty_version' => '8.2.2',
+            'version' => '8.2.2.0',
+            'reference' => '10dbd6ecbc6ac1e0c61ab7d70c44e0794f8d3a1f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twilio/sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
     ),
 );

@@ -6,6 +6,7 @@ use EmailSender\Crud\Inputs\TerminalInput;
 use EmailSender\Crud\Sender\Email;
 use EmailSender\Crud\Outputs\TerminalOutput;
 use EmailSender\Crud\DataBase\WriteFile;
+use EmailSender\Crud\Sender\EmailSend;
 use PHPUnit\Framework\TestCase;
 
 class CreateTest extends TestCase
@@ -72,7 +73,7 @@ class CreateTest extends TestCase
 
     private function createEmailMock()
     {
-        $mock = $this->getMockBuilder(Email::class)->getMock();
+        $mock = $this->getMockBuilder(EmailSend::class)->getMock();
 
         return $mock;
     }

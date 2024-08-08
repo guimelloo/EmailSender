@@ -6,31 +6,45 @@ use PHPUnit\Framework\TestCase;
 
 class WriteTest extends TestCase
 {
-    private WriteFile $database;
+    private string $filename;
 
     public function setUp(): void
     {
-        $this->database = new WriteFile(__DIR__ . '/db.txt');
-
-        $this->database->clear();
+        $this->filename = __DIR__ . '/database_file.txt';
     }
 
-    public function test_if_is_write_is_writing()
+    public function tearDown(): void
     {
-        $this->assertSame(true, $this->database->write('negromonteguilherme@gmail.com'));
+        unlink($this->filename);
     }
 
-    public function test_if_clear_is_cleaning()
+    public function test_file_database_is_writing()
     {
-        $this->database->write('negromonteguilherme@gmail.com'); 
+        $database = new WriteFile($this->filename);
+        
+        $database->write('negromonteguilherme@gmail.com');
 
-        $this->database->clear();
-
-        $this->assertSame('', $this->database->get());
+        $this->assertEquals("negromonteguilherme@gmail.com\n", file_get_contents($this->filename));
     }
 
-    public function test_get_is_string()
+    public function test_file_database_is_cleaning()
     {
-        $this->assertIsString($this->database->get());
+        $database = new WriteFile($this->filename);
+        
+        $database->write('negromonteguilherme@gmail.com');
+
+        dd(file_get_contents($this->filename));
+        $database->clear();
+
+        $this->assertEquals('', file_get_contents($this->filename));
+    }
+
+    public function test_file_database_is_string()
+    {
+        $database = new WriteFile($this->filename);
+
+        $database->write('negromonteguilherme@gmail.com');
+
+        $this->assertSame("negromonteguilherme@gmail.com\n", $database->get());
     }
 }
